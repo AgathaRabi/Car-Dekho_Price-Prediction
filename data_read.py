@@ -9,7 +9,7 @@ hyderabad_data = pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\hyderabad_cars.x
 bangalore_data =pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\bangalore_cars.xlsx")
 chennai_data = pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\chennai_cars.xlsx")
 
-#print(kolkata_data)
+#print(kolkata_data)jhgghjh
 
 
 
@@ -28,7 +28,7 @@ kolkata_data_test.to_excel('C:\\Users\\PAPPILON\\Downloads\\kolkata_data_df_test
 kolkata_data_test.explode(['new_car_detail'])
 kolkata_data_test.to_excel('C:\\Users\\PAPPILON\\Downloads\\kolkata_data_df_test150625AN.xlsx')"""
 
-def structured_dataframe(df):
+"""def structured_dataframe(df):
     #get column names:
     column_names = df.columns.to_list()
     normalized_dataframe = pd.DataFrame()
@@ -39,9 +39,20 @@ def structured_dataframe(df):
     return normalized_dataframe
 
 structured_kolkata_data = structured_dataframe(kolkata_data)
-structured_kolkata_data.to_excel('C:\\Users\\PAPPILON\\Downloads\\kolkata_data_df_test150625AN.xlsx')
+structured_kolkata_data.to_excel('C:\\Users\\PAPPILON\\Downloads\\kolkata_data_df_test150625AN.xlsx')"""
 
 """normalized_dataframe = pd.json_normalize(kolkata_data)
 normalized_dataframe.to_excel('C:\\Users\\PAPPILON\\Downloads\\kolkata_data_df_test150625AN.xlsx')"""
+
+
+def structured_dataframe(df):
+
+    first_cell_val_dict_str = df.iloc[0]
+
+
+
+
+
+
 
 #(pd.concat([df.drop(column_name, axis = 1), normalized_dataframe], axis = 1)))

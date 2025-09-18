@@ -2,12 +2,12 @@ import pandas as pd
 import json as js
 
 # Read the excel files
-kolkata_data = pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\kolkata_cars.xlsx")
-jaipur_data = pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\jaipur_cars.xlsx")
-delhi_data = pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\delhi_cars.xlsx")
-hyderabad_data = pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\hyderabad_cars.xlsx")
-bangalore_data =pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\bangalore_cars.xlsx")
-chennai_data = pd.read_excel("C:\\Users\\PAPPILON\\Downloads\\chennai_cars.xlsx")
+kolkata_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/kolkata_cars.xlsx")
+jaipur_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/jaipur_cars.xlsx")
+delhi_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/delhi_cars.xlsx")
+hyderabad_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/hyderabad_cars.xlsx")
+bangalore_data =pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/bangalore_cars.xlsx")
+chennai_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/chennai_cars.xlsx")
 
 #print(kolkata_data)jhgghjh
 

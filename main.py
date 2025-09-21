@@ -24,15 +24,19 @@ bangalore_cars_df = data_extractor.extract_data(bangalore_data, 'bangalore')
 chennai_cars_df = data_extractor.extract_data(chennai_data, 'chennai')
 
 
-# dropping duplicate columns>
-
-chennai_cars_df = dc.drop_duplicate_columns(chennai_cars_df)
-
 
 # Cleaning of the extracted and formatted data:
 
 chennai_cars_df = dc.clean_car_data(chennai_cars_df)
 kolkata_cars_df = dc.clean_car_data(kolkata_cars_df)
+
+
+# dropping duplicate columns>
+
+chennai_cars_df = dc.drop_duplicate_columns(chennai_cars_df)
+
+
+
 
 
 

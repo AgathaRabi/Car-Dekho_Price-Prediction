@@ -1,16 +1,16 @@
 import pandas as pd
 import data_extractor
 import data_cleaner as dc
-
+from data_cleaner import rename_column_names
 
 # Read the excel files:
 
-kolkata_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/kolkata_cars.xlsx")
-jaipur_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/jaipur_cars.xlsx")
-delhi_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/delhi_cars.xlsx")
-hyderabad_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/hyderabad_cars.xlsx")
-bangalore_data =pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/bangalore_cars.xlsx")
-chennai_data = pd.read_excel("/home/agathar/Desktop/zen projects/car dheko/data/chennai_cars.xlsx")
+kolkata_data = pd.read_excel("/home/agatha/Desktop/capstone projects/car dheko/data/kolkata_cars.xlsx")
+jaipur_data = pd.read_excel("/home/agatha/Desktop/capstone projects/car dheko/data/jaipur_cars.xlsx")
+delhi_data = pd.read_excel("/home/agatha/Desktop/capstone projects/car dheko/data/delhi_cars.xlsx")
+hyderabad_data = pd.read_excel("/home/agatha/Desktop/capstone projects/car dheko/data/hyderabad_cars.xlsx")
+bangalore_data =pd.read_excel("/home/agatha/Desktop/capstone projects/car dheko/data/bangalore_cars.xlsx")
+chennai_data = pd.read_excel("/home/agatha/Desktop/capstone projects/car dheko/data/chennai_cars.xlsx")
 
 
 
@@ -24,30 +24,49 @@ bangalore_cars_df = data_extractor.extract_data(bangalore_data, 'bangalore')
 chennai_cars_df = data_extractor.extract_data(chennai_data, 'chennai')
 
 
+# initial clean of the extracted and formatted data:
 
-# Cleaning of the extracted and formatted data:
-
-chennai_cars_df = dc.clean_car_data(chennai_cars_df)
-kolkata_cars_df = dc.clean_car_data(kolkata_cars_df)
+chennai_cars_df = dc.step1_clean_car_data(chennai_cars_df)
 
 
-# dropping duplicate columns>
+
+# dropping duplicate columns:
 
 chennai_cars_df = dc.drop_duplicate_columns(chennai_cars_df)
 
 
+# rename of columns
+
+chennai_cars_df = rename_column_names(chennai_cars_df)
+
+# filling nans
+
+#chennai_cars_df = dc.fill_nans(chennai_cars_df)
+
+# further cleaning of extracted and formatted data:
+
+chennai_cars_df = dc.step2_clean_car_data(chennai_cars_df)
 
 
+# Further Clean of the extracted and formatted data:
+
+chennai_cars_df = dc.step3_clean_car_data(chennai_cars_df)
+
+#kolkata_cars_df = dc.clean_car_data(kolkata_cars_df)
+
+# Further Clean of the extracted and formatted data:
+
+#chennai_cars_df = dc.step4_clean_car_data(chennai_cars_df)
 
 
 # For testing how accurately data is getting extracted
 
-kolkata_cars_df.to_excel('/home/agathar/Desktop/zen projects/car dheko/data/normalised_kolkata_dat.xlsx')
-jaipur_cars_df.to_excel('/home/agathar/Desktop/zen projects/car dheko/data/normalised_jaipur_dat.xlsx')
-delhi_cars_df.to_excel('/home/agathar/Desktop/zen projects/car dheko/data/normalised_delhi_dat.xlsx')
-hyderabad_cars_df.to_excel('/home/agathar/Desktop/zen projects/car dheko/data/normalised_hyderabad_dat.xlsx')
-bangalore_cars_df.to_excel('/home/agathar/Desktop/zen projects/car dheko/data/normalised_bangalore_dat.xlsx')
-chennai_cars_df.to_excel('/home/agathar/Desktop/zen projects/car dheko/data/normalised_chennai_dat.xlsx')
+kolkata_cars_df.to_excel('/home/agatha/Desktop/capstone projects/car dheko/data/normalised_kolkata_dat.xlsx')
+jaipur_cars_df.to_excel('/home/agatha/Desktop/capstone projects/car dheko/data/normalised_jaipur_dat.xlsx')
+delhi_cars_df.to_excel('/home/agatha/Desktop/capstone projects/car dheko/data/normalised_delhi_dat.xlsx')
+hyderabad_cars_df.to_excel('/home/agatha/Desktop/capstone projects/car dheko/data/normalised_hyderabad_dat.xlsx')
+bangalore_cars_df.to_excel('/home/agatha/Desktop/capstone projects/car dheko/data/normalised_bangalore_dat.xlsx')
+chennai_cars_df.to_excel('/home/agatha/Desktop/capstone projects/car dheko/data/normalised_chennai_dat.xlsx')
 
 # Similarly run for other cities and concatenate all together into one big dataframe
 

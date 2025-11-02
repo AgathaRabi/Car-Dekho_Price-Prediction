@@ -1,7 +1,9 @@
 import pandas as pd
 import data_extractor
-import data_cleaner as dc
-from data_cleaner import rename_column_names
+import data_cleaner_b4_concatenating as dc
+from data_cleaner_b4_concatenating import rename_column_names
+import numpy as np
+import openpyxl
 
 # Read the excel files:
 
@@ -23,10 +25,34 @@ hyderabad_cars_df = data_extractor.extract_data(hyderabad_data, 'hyderabad')
 bangalore_cars_df = data_extractor.extract_data(bangalore_data, 'bangalore')
 chennai_cars_df = data_extractor.extract_data(chennai_data, 'chennai')
 
+# data frame before cleaning:
+
+chennai_cars_df.to_excel('/home/agatha/Desktop/capstone projects/car dheko/data/before_cleaning_chennai_dat.xlsx')
+
+
+# replacing all the blank spaces with nan
+
+chennai_cars_df = chennai_cars_df.replace(r'^\s*$', np.nan, regex=True)
+
+
+# column names:
+
+"""column_names = chennai_cars_df.columns.tolist()
+print('column_names_chennai :', column_names)"""
+
+
+# data info
+
+print(chennai_cars_df.info())
+print('nans in chennai_df : ' , chennai_cars_df.isna().sum())
+print('data type:', type(chennai_cars_df.isna().sum()))
+#print('no. of rows and columns :', chennai_cars_df.shape)
+print('nans in Registration Year : ' , chennai_cars_df['Registration Year'].isnull().sum())
+print('unique values count :', chennai_cars_df['Registration Year'].value_counts())
 
 # initial clean of the extracted and formatted data:
 
-chennai_cars_df = dc.step1_clean_car_data(chennai_cars_df)
+chennai_cars_df = dc.drop_and_simple_extract(chennai_cars_df)
 
 
 
@@ -39,14 +65,14 @@ chennai_cars_df = dc.drop_duplicate_columns(chennai_cars_df)
 
 chennai_cars_df = rename_column_names(chennai_cars_df)
 
-# filling nans
-
-#chennai_cars_df = dc.fill_nans(chennai_cars_df)
 
 # further cleaning of extracted and formatted data:
 
 chennai_cars_df = dc.step2_clean_car_data(chennai_cars_df)
 
+# filling nans
+
+#chennai_cars_df = dc.fill_nans(chennai_cars_df)
 
 # Further Clean of the extracted and formatted data:
 
